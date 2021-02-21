@@ -13,7 +13,7 @@ function Header() {
         <Link to="/">amazona</Link>
       </div>
       <div className="header-links">
-        <a href="cart.html">Cart</a>
+        <Link to='/cart'>Cart</Link>
         <a href="cart.html">{ userInfo }</a>
         { userInfo ?  <Link to="/profile"> {userInfo.name} </Link> : <Link to="/signin">Sign In</Link>
         }

@@ -12,8 +12,8 @@ import products from './data.js';
 // mongo>>> use mynewdb;
 // mongo>>> db.createUser({ user: 'admin', pwd: 'pass', roles: [ { role: "readWrite", db: "webdevdb" } ] })
 
-const mongourl = 'mongodb://admin:pass@localhost/mynewdb';
-//const mongourl = "mongodb+srv://admin:pass@cluster0.bcaja.mongodb.net/mynewdb?retryWrites=true&w=majority";
+// const mongourl = 'mongodb://admin:pass@localhost/mynewdb';
+const mongourl = "mongodb+srv://admin:pass@cluster0.2vapn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(mongourl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -54,7 +54,7 @@ function importDatajs() {
     });
   });
 }
-//importDatajs();
+// importDatajs();
 
 const app = express();
 app.use(bodyParser.json());
@@ -65,10 +65,10 @@ app.use(bodyParser.json());
 //});
 app.use('/api/users', userRoutes);
 
-app.get('/api/cats', async (_, res) => {
-  const cats = await Cat.find({});
-  res.send(cats);
-});
+// app.get('/api/cats', async (_, res) => {
+//   const cats = await Cat.find({});
+//   res.send(cats);
+// });
 
 // list ทั้งหมดของ products
 app.get('/api/products', async (_, res) => {
@@ -77,8 +77,9 @@ app.get('/api/products', async (_, res) => {
 });
 
 // product._id 
-app.get('/api/product/:id', (_, res) => {
-  // const product = products.find(x => x._id === req.params.id);
+app.get('/api/product/:id', async (req, res) => {
+  // console.log(req.headers)
+  const product = await Product.findById(req.params.id);
   res.send(product);
 })
 

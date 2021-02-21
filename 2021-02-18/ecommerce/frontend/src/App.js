@@ -9,6 +9,7 @@ import Sidebar from './components/Sidebar.js';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail.js';
 import Signin from './pages/Signin.js';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" exact={true} component={Home} />
             <Route path="/product/:id" component={ProductDetail} />
             <Route path="/signin" component={Signin} />
+            <Route path="/cart/:id?" component={Cart} />
           </Switch>
           </div>
         </main>
